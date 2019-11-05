@@ -2,6 +2,7 @@ package com.example.project_sleep_alarm;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.app.Activity;
@@ -40,6 +41,9 @@ public class MainActivity extends Activity {
 
                 Toast.makeText(MainActivity.this, "Selected time: " + hour +
                         ":" + minutes ,Toast.LENGTH_LONG).show();
+
+                Intent viewNightMode = new Intent(MainActivity.this, NightmodeActivity.class);
+                startActivity(viewNightMode);
 
             }
         });
