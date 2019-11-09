@@ -1,51 +1,45 @@
 package com.example.project_sleep_alarm;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
-import android.content.Intent;
-import android.os.Bundle;
+import com.google.android.material.tabs.TabLayout;
 
-import android.app.Activity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TimePicker;
-import android.widget.Toast;
+public class MainActivity extends AppCompatActivity {
 
-public class MainActivity extends Activity {
-
-    TimePicker timepicker;
-    int hour, minutes;
-    Button GetTime;
+    TabLayout tabLayout;
+    ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        timepicker = (TimePicker)findViewById(R.id.datePicker1);
-        //timepicker.setIs24HourView(true);
+        tabLayout = findViewById(R.id.tabLayout);
+        viewPager = findViewById(R.id.viewPager);
 
+        tabLayout.addTab(tabLayout.newTab().setText("Set Alarm"));
+        tabLayout.addTab(tabLayout.newTab().setText("My Cycle"));
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        GetTime = (Button)findViewById(R.id.button1);
-
-
-        GetTime.setOnClickListener(new View.OnClickListener() {
-
+        final MyTabAdapter adapter = new MyTabAdapter(this,getSupportFragmentManager(),
+                tabLayout.getTabCount());
+        viewPager.setAdapter(adapter);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-
-                hour = timepicker.getCurrentHour();
-                minutes = timepicker.getCurrentMinute();
-
-                Toast.makeText(MainActivity.this, "Selected time: " + hour +
-                        ":" + minutes ,Toast.LENGTH_LONG).show();
-
-                Intent viewNightMode = new Intent(MainActivity.this, NightmodeActivity.class);
-                startActivity(viewNightMode);
-
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
             }
         });
+
     }
 }

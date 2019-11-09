@@ -2,4 +2,7 @@
     <string name="app_name">Project-Sleep-Alarm</string>
     <string name="btnCancel">btnCancel</string>
     <string name="Cancel">Cancel</string>
+    <string name="txtBedTime">txtBedTime</string>
+    <string name="txtWakeUpTime">WakeupTime</string>
+    <string name="txtHowAreYou">txtcheck</string>
 </resources>
