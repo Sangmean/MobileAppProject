@@ -7,7 +7,16 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+        implements SetAlarmFrag.OnTimePickerSetListener{
+
+    //data from setAlarmFrag
+    int wakeupHour, wakeupMinute;
+    @Override
+    public void onTimePickerSet(int hour, int min){
+        wakeupHour = hour;
+        wakeupMinute = min;
+    }
 
     TabLayout tabLayout;
     ViewPager viewPager;

@@ -14,6 +14,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -32,6 +33,13 @@ public class NightmodeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nightmode);
+
+        Intent intent = getIntent();
+        int wakeupHour = intent.getIntExtra("hour", 0);
+        int wakeupMinute = intent.getIntExtra("min",0);
+
+        Toast.makeText(getApplicationContext(), "Selected time: " + wakeupHour +
+                ":" + wakeupMinute ,Toast.LENGTH_LONG).show();
 
         currentTime = findViewById(R.id.txtViewTime);
         handler = new ProgressHandler();
