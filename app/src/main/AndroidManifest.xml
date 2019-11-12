@@ -9,12 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
         <activity android:name=".AlarmActivity"></activity>
-        <activity android:name=".NightmodeActivity" />
-=======
         <activity android:name=".NightmodeActivity"></activity>
->>>>>>> 5f8fc360c2373ec8fb53ce3666e1157ef334b25c
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

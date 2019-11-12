@@ -1,9 +1,6 @@
 package com.example.project_sleep_alarm;
 
-<<<<<<< HEAD
-=======
 import android.content.Context;
->>>>>>> 5f8fc360c2373ec8fb53ce3666e1157ef334b25c
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,10 +13,9 @@ import androidx.fragment.app.Fragment;
 
 public class SetAlarmFrag extends Fragment {
 
-<<<<<<< HEAD
-=======
+
     private OnTimePickerSetListener onTimePickerSetListener;
->>>>>>> 5f8fc360c2373ec8fb53ce3666e1157ef334b25c
+
     int hour;
     int minutes;
 
@@ -44,27 +40,27 @@ public class SetAlarmFrag extends Fragment {
 
                 hour = timepicker.getCurrentHour();
                 minutes = timepicker.getCurrentMinute();
-<<<<<<< HEAD
-                intent.putExtra("hour",hour);
-                intent.putExtra("min", minutes);
 
-=======
+                //intent.putExtra("hour",hour);
+                //intent.putExtra("min", minutes);
+
+
 
                 onTimePickerSetListener.onTimePickerSet(hour,minutes);
->>>>>>> 5f8fc360c2373ec8fb53ce3666e1157ef334b25c
+
 
 
                 // We don't have to show this
 //                Toast.makeText(.this, "Selected time: " + hour +
 //                        ":" + minutes , Toast.LENGTH_LONG).show();
-<<<<<<< HEAD
+
 
                 Intent intent = new Intent (SetAlarmFrag.this.getActivity(), NightmodeActivity.class);
-=======
-                Intent intent = new Intent (SetAlarmFrag.this.getActivity(), NightmodeActivity.class);
+
+               // Intent intent = new Intent (SetAlarmFrag.this.getActivity(), NightmodeActivity.class);
                 intent.putExtra("hour",hour);
                 intent.putExtra("min", minutes);
->>>>>>> 5f8fc360c2373ec8fb53ce3666e1157ef334b25c
+
                 SetAlarmFrag.this.getActivity().startActivity(intent);
 
             }
@@ -72,8 +68,7 @@ public class SetAlarmFrag extends Fragment {
         return v;
     }
 
-<<<<<<< HEAD
-=======
+
     public interface OnTimePickerSetListener {
         void onTimePickerSet(int hour, int min);
     }
@@ -92,5 +87,5 @@ public class SetAlarmFrag extends Fragment {
         onTimePickerSetListener = null;
     }
 
->>>>>>> 5f8fc360c2373ec8fb53ce3666e1157ef334b25c
+
 }
