@@ -26,9 +26,12 @@ public class NightmodeActivity extends AppCompatActivity {
     TextView currentTime;
     UsedAsync asyncTask;
     ProgressHandler handler;
+    int wakeupHour;
+    int wakeupMinute;
 
-    SetAlarmFrag s = new SetAlarmFrag();
+    MainActivity mainActivity = new MainActivity();
     Calendar calendar = Calendar.getInstance();
+    SetAlarmFrag s = new SetAlarmFrag();
 
     SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
     String time;
@@ -38,12 +41,12 @@ public class NightmodeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_nightmode);
 
         Intent intent = getIntent();
-        int wakeupHour = intent.getIntExtra("hour", 0);
-        int wakeupMinute = intent.getIntExtra("min",0);
+        wakeupHour = intent.getIntExtra("hour", 0);
+        wakeupMinute = intent.getIntExtra("min",0);
 
 
-        Toast.makeText(getApplicationContext(), "Selected time: " + s.hour +
-                ":" + s.minutes ,Toast.LENGTH_LONG).show();
+//        Toast.makeText(getApplicationContext(), "Selected time: " + s.hour +
+//                ":" + s.minutes ,Toast.LENGTH_LONG).show();
 
         Toast.makeText(getApplicationContext(), "Selected time: " + wakeupHour +
                 ":" + wakeupMinute ,Toast.LENGTH_LONG).show();
@@ -75,11 +78,10 @@ public class NightmodeActivity extends AppCompatActivity {
                         handler.sendMessage(message);
 
 
-                        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+                        int hour = calendar.get(Calendar.HOUR);
                         int minute = calendar.get(Calendar.MINUTE);
 
-                        //if (s.hour == hour && s.hour == minute){
-                          if(true){
+                        if (wakeupHour == hour && wakeupMinute == minute){
                             Intent intent = new Intent(getApplicationContext(),AlarmActivity.class);
                             startActivity(intent);
                         }
