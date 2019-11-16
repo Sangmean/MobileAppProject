@@ -13,6 +13,7 @@ import com.google.android.material.tabs.TabLayout;
 public class MainActivity extends AppCompatActivity
         implements SetAlarmFrag.OnTimePickerSetListener{
 
+
     //data from setAlarmFrag
     int wakeupHour, wakeupMinute;
     @Override
@@ -20,7 +21,6 @@ public class MainActivity extends AppCompatActivity
         wakeupHour = hour;
         wakeupMinute = min;
     }
-
 
     TabLayout tabLayout;
     ViewPager viewPager;
@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity
 
         tabLayout.addTab(tabLayout.newTab().setText("Set Alarm"));
         tabLayout.addTab(tabLayout.newTab().setText("My Cycle"));
+        tabLayout.getTabAt(0).setIcon(R.drawable.alarmclockicon);
+        tabLayout.getTabAt(1).setIcon(R.drawable.sleepicon);
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final MyTabAdapter adapter = new MyTabAdapter(this,getSupportFragmentManager(),
@@ -55,4 +57,5 @@ public class MainActivity extends AppCompatActivity
         });
 
     }
+
 }
