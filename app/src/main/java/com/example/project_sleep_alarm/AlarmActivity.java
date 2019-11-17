@@ -41,13 +41,13 @@ public class AlarmActivity extends AppCompatActivity {
     public void alarmDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("get up");
-        builder.setPositiveButton("take a nape", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                alarm();
-                finish();
-            }
-        });
+//        builder.setPositiveButton("take a nape", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                alarm();
+//                finish();
+//            }
+//        });
         builder.setNegativeButton("cancel alarm", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -57,19 +57,19 @@ public class AlarmActivity extends AppCompatActivity {
         builder.show();
     }
 
-    public void alarm(){
-        //get system alarm service
-        AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-
-        //triggerTime(ms)
-        long triggerTime = 2000;
-        Intent intent = new Intent(getApplicationContext(),AlarmActivity.class);
-        PendingIntent op = PendingIntent.getBroadcast(getApplicationContext(),0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
-        //excute only once
-        am.set(AlarmManager.RTC,triggerTime,op);
-
-        //am.setRepeating(AlarmManager.RTC,triggerTime,2000,op);
-
-
-    }
+//    public void alarm(){
+//        //get system alarm service
+//        AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+//
+//        //triggerTime(ms)
+//        long triggerTime = 2000;
+//        Intent intent = new Intent(getApplicationContext(),AlarmActivity.class);
+//        PendingIntent op = PendingIntent.getBroadcast(getApplicationContext(),0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+//        //excute only once
+//        am.set(AlarmManager.RTC,triggerTime,op);
+//
+//        //am.setRepeating(AlarmManager.RTC,triggerTime,2000,op);
+//
+//
+//    }
 }

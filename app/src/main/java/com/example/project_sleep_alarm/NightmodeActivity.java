@@ -29,7 +29,7 @@ public class NightmodeActivity extends AppCompatActivity {
     int wakeupHour;
     int wakeupMinute;
 
-    MainActivity mainActivity = new MainActivity();
+    //MainActivity mainActivity = new MainActivity();
     Calendar calendar = Calendar.getInstance();
     SetAlarmFrag s = new SetAlarmFrag();
 
@@ -44,13 +44,8 @@ public class NightmodeActivity extends AppCompatActivity {
         wakeupHour = intent.getIntExtra("hour", 0);
         wakeupMinute = intent.getIntExtra("min",0);
 
-
-//        Toast.makeText(getApplicationContext(), "Selected time: " + s.hour +
-//                ":" + s.minutes ,Toast.LENGTH_LONG).show();
-
         Toast.makeText(getApplicationContext(), "Selected time: " + wakeupHour +
                 ":" + wakeupMinute ,Toast.LENGTH_LONG).show();
-
 
         currentTime = findViewById(R.id.txtViewTime);
         handler = new ProgressHandler();
@@ -77,15 +72,15 @@ public class NightmodeActivity extends AppCompatActivity {
                         Message message = handler.obtainMessage();
                         handler.sendMessage(message);
 
+                        String[] timearray = time.split(":");
+                        int hourArr = Integer.parseInt(timearray[0]);
+                        int minuteArr = Integer.parseInt(timearray[1]);
+                        int secondArr = Integer.parseInt(timearray[2]);
 
-                        int hour = calendar.get(Calendar.HOUR);
-                        int minute = calendar.get(Calendar.MINUTE);
-
-                        if (wakeupHour == hour && wakeupMinute == minute){
+                        if (wakeupHour == hourArr && wakeupMinute == minuteArr && secondArr == 0){
                             Intent intent = new Intent(getApplicationContext(),AlarmActivity.class);
                             startActivity(intent);
                         }
-
 
                         Thread.sleep(1000);
 
