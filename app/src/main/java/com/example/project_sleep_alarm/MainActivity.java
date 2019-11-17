@@ -7,9 +7,6 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 
-
-
-
 public class MainActivity extends AppCompatActivity
         implements SetAlarmFrag.OnTimePickerSetListener{
 
