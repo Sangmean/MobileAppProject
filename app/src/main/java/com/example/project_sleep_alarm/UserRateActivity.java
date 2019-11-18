@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -30,21 +29,17 @@ public class UserRateActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                UserDataFrag mainFragment = (UserDataFrag) getFragmentManager().findFragmentById(R.id.frameLayout2);
-
+            replaceFragment(fragment1);
             }
 
         });
 
-        replaceFragment();
     }
 
-    public void replaceFragment()
-    {
-        UserDataFrag mainFragment = new UserDataFrag();
-        FragmentManager fragmentManager = getFragmentManager();
+    public void replaceFragment(Fragment fragment){
+        FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frameLayout2, mainFragment);
+        fragmentTransaction.replace(R.id.fragment_container, fragment);
         fragmentTransaction.commit();
     }
 
