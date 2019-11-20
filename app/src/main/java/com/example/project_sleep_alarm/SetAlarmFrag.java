@@ -41,19 +41,7 @@ public class SetAlarmFrag extends Fragment {
                 hour = timepicker.getCurrentHour();
                 minutes = timepicker.getCurrentMinute();
 
-                //intent.putExtra("hour",hour);
-                //intent.putExtra("min", minutes);
-
-
-
                 onTimePickerSetListener.onTimePickerSet(hour,minutes);
-
-
-
-                // We don't have to show this
-//                Toast.makeText(.this, "Selected time: " + hour +
-//                        ":" + minutes , Toast.LENGTH_LONG).show();
-
 
                 Intent intent = new Intent (SetAlarmFrag.this.getActivity(), NightmodeActivity.class);
 

@@ -1,6 +1,7 @@
 package com.example.project_sleep_alarm;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import java.util.List;
 public class MyListviewAdapter extends BaseAdapter {
 
     List<String> myList = new ArrayList<>();
+
     Context context;
 
     public MyListviewAdapter(Context anyContext, List<String> anyList){
@@ -44,9 +46,19 @@ public class MyListviewAdapter extends BaseAdapter {
         }
 
         TextView txtViewItem = convertView.findViewById(R.id.txtViewListItem);
-        txtViewItem.setText(myList.get(position));
-        txtViewItem.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
 
+
+        if(myList.get(position) != null )
+        {
+            txtViewItem.setTextColor(Color.WHITE);
+            txtViewItem.setText(myList.get(position));
+            txtViewItem.setBackgroundColor(Color.BLUE);
+            int color = Color.argb( 200, 0, 51, 102 );
+            txtViewItem.setBackgroundColor( color );
+            txtViewItem.setText(myList.get(position));
+            txtViewItem.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
+
+        }
         return convertView;
     }
 }
