@@ -9,9 +9,13 @@
 
     <Button
         android:id="@+id/btnRecordVoice"
+        android:background="@drawable/button_custom"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/btnRecord"
+        app:fontFamily="monospace"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.16"
@@ -21,9 +25,13 @@
 
     <Button
         android:id="@+id/btnStartVoice"
+        android:background="@drawable/button_custom"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/btnStart"
+        app:fontFamily="monospace"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.829"
@@ -33,9 +41,13 @@
 
     <Button
         android:id="@+id/btnGoBack"
+        android:background="@drawable/button_custom"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Back"
+        app:fontFamily="monospace"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

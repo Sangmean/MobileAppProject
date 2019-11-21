@@ -24,8 +24,12 @@
     <Button
         android:id="@+id/btnGoToBed"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Let's Go to Bed"
+
+        android:layout_height="30dp"
+        android:background="@drawable/button_custom_main"
+        android:text="Go to Bed"
+        app:fontFamily="monospace"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,8 +39,12 @@
     <Button
         android:id="@+id/btnToWhiteNoise"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+        android:layout_height="30dp"
+        android:background="@drawable/button_custom_main"
         android:text="Need to Make White Noise"
+        app:fontFamily="monospace"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
