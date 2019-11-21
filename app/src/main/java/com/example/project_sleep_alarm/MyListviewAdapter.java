@@ -52,10 +52,6 @@ public class MyListviewAdapter extends BaseAdapter {
         {
             txtViewItem.setTextColor(Color.WHITE);
             txtViewItem.setText(myList.get(position));
-            txtViewItem.setBackgroundColor(Color.BLUE);
-            int color = Color.argb( 200, 0, 51, 102 );
-            txtViewItem.setBackgroundColor( color );
-            txtViewItem.setText(myList.get(position));
             txtViewItem.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
 
         }

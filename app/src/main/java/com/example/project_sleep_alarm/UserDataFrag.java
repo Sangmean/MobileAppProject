@@ -24,7 +24,7 @@ public class UserDataFrag extends Fragment {
     private void addItems(){
         userDataList.add("Record Feeling");
         userDataList.add("Sleep Log");
-//        userDataList.add("Recorded Voice");
+        userDataList.add("Recorded Voice");
     }
     public UserDataFrag() {
         // Required empty public constructor

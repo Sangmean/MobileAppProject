@@ -8,4 +8,6 @@
     <string name="txtHourSlept">Hours Slept</string>
     <string name="txtBed">Bed time</string>
     <string name="txtWakeup">Wake Up Time</string>
+    <string name="btnRecord">Start Recording</string>
+    <string name="btnStart">Start Playing</string>
 </resources>

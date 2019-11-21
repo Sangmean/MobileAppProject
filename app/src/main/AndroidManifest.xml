@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SleeplogActivity"></activity>
+        <activity android:name=".VoiceRecordActivity"></activity>
+        <activity android:name=".SleeplogActivity" />
         <activity android:name=".UserRateActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>
