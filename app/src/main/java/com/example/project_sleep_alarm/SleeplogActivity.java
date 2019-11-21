@@ -69,7 +69,7 @@ public class SleeplogActivity extends AppCompatActivity {
     private void DrawBarChart(){
         BarDataSet barDataSet = new BarDataSet(getData(), "Inducesmile");
         barDataSet.setBarBorderWidth(0.9f);
-        barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+//        barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         BarData barData = new BarData(barDataSet);
         XAxis xAxis = barChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
@@ -78,21 +78,22 @@ public class SleeplogActivity extends AppCompatActivity {
         xAxis.setGranularity(1f);
         xAxis.setValueFormatter(formatter);
         barChart.setData(barData);
+        barChart.getXAxis().setTextColor(android.R.color.white);
         barChart.setFitBars(true);
-        barChart.animateXY(5000, 5000);
+        barChart.animateXY(3000, 3000);
         barChart.invalidate();
     }
 
     private void DrawLineChart(LineChart lineChart){
         /* https://namget.tistory.com/entry/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-MPAndroidChart-LineChart-%EC%86%8D%EC%84%B1-%EC%A0%95%EB%A6%AC-Example*/
-        LineDataSet lineDataSet = new LineDataSet(getLineData(), "# of Calls");
+        LineDataSet lineDataSet = new LineDataSet(getLineData(),null);
 
 
         LineData lineData = new LineData(lineDataSet);
-        lineDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+//        lineDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
 
-        /*dataset.setDrawCubic(true); //선 둥글게 만들기
-        dataset.setDrawFilled(true); //그래프 밑부분 색칠*/
+//        /*dataset.setDrawCubic(true); //선 둥글게 만들기
+        lineDataSet.setDrawFilled(true);
         XAxis xAxis = lineChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         String[] days = getLables();
@@ -101,7 +102,7 @@ public class SleeplogActivity extends AppCompatActivity {
         xAxis.setValueFormatter(formatter);
 
         lineChart.setData(lineData);
-        lineChart.animateY(5000);
+        lineChart.animateY(3000);
     }
 
 }

@@ -10,4 +10,6 @@
     <string name="txtWakeup">Wake Up Time</string>
     <string name="btnRecord">Start Recording</string>
     <string name="btnStart">Start Playing</string>
+    <string name="txtNight">Nighty-Night</string>
+    <string name="avghour">Average hours</string>
 </resources>
