@@ -33,7 +33,7 @@ public class NightmodeActivity extends AppCompatActivity {
     Calendar calendar = Calendar.getInstance();
     SetAlarmFrag s = new SetAlarmFrag();
 
-    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+    SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss a");
     String time;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +44,9 @@ public class NightmodeActivity extends AppCompatActivity {
         wakeupHour = intent.getIntExtra("hour", 0);
         wakeupMinute = intent.getIntExtra("min",0);
 
-        Toast.makeText(getApplicationContext(), "Selected time: " + wakeupHour +
-                ":" + wakeupMinute ,Toast.LENGTH_LONG).show();
+//  we don't need to show this unless we want it (Sangmin)
+//        Toast.makeText(getApplicationContext(), "Selected time: " + wakeupHour +
+//                ":" + wakeupMinute ,Toast.LENGTH_LONG).show();
 
         currentTime = findViewById(R.id.txtViewTime);
         handler = new ProgressHandler();

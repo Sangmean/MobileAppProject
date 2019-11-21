@@ -20,11 +20,15 @@ import java.util.List;
 public class UserDataFrag extends Fragment {
 
     List<String> userDataList = new ArrayList<>();
+    List<Integer> userDataListIcon = new ArrayList<>();
 
     private void addItems(){
         userDataList.add("Record Feeling");
-        userDataList.add("Sleep Log");
-        userDataList.add("Recorded Voice");
+        userDataList.add("Sleep Graph");
+        userDataList.add("Record Voice");
+        userDataListIcon.add(R.drawable.recordfeel);
+        userDataListIcon.add(R.drawable.graphicon);
+        userDataListIcon.add(R.drawable.voiceicon);
     }
     public UserDataFrag() {
         // Required empty public constructor
@@ -39,7 +43,7 @@ public class UserDataFrag extends Fragment {
         ListView listViewItems = v.findViewById(R.id.listViewItem);
         listViewItems.setAdapter(new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_list_item_1, userDataList));
 
-        listViewItems.setAdapter(new MyListviewAdapter(this.getActivity(), userDataList));
+        listViewItems.setAdapter(new MyListviewAdapter(this.getActivity(), userDataList,userDataListIcon));
 
         listViewItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -50,6 +54,9 @@ public class UserDataFrag extends Fragment {
                         break;
                     case 1:
                         startActivity(new Intent(UserDataFrag.this.getActivity(), SleeplogActivity.class));
+                        break;
+                    case 2:
+                        startActivity(new Intent(UserDataFrag.this.getActivity(), VoiceRecordActivity.class));
                         break;
                 }
             }

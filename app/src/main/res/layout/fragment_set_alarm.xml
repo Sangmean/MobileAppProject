@@ -12,6 +12,7 @@
 
     <TimePicker
         android:id="@+id/datePicker1"
+        android:theme="@style/my_time_picker_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="154dp"
@@ -24,13 +25,22 @@
         android:id="@+id/btnGoToBed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ready to Go Bed"
+        android:text="Let's Go to Bed"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/datePicker1"
-        app:layout_constraintVertical_bias="0.239" />
+        app:layout_constraintVertical_bias="0.334" />
+
+    <Button
+        android:id="@+id/btnToWhiteNoise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Need to Make White Noise"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnGoToBed" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
