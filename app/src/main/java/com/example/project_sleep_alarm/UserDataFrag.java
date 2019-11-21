@@ -22,9 +22,9 @@ public class UserDataFrag extends Fragment {
     List<String> userDataList = new ArrayList<>();
 
     private void addItems(){
-        userDataList.add("User Rating");
-        userDataList.add("Recent Bed & Wakeup Time");
-        userDataList.add("Recorded Voice");
+        userDataList.add("Record Feeling");
+        userDataList.add("Sleep Log");
+//        userDataList.add("Recorded Voice");
     }
     public UserDataFrag() {
         // Required empty public constructor
@@ -47,6 +47,9 @@ public class UserDataFrag extends Fragment {
                 switch (position){
                     case 0:
                         startActivity(new Intent(UserDataFrag.this.getActivity(), UserRateActivity.class));
+                        break;
+                    case 1:
+                        startActivity(new Intent(UserDataFrag.this.getActivity(), SleeplogActivity.class));
                         break;
                 }
             }

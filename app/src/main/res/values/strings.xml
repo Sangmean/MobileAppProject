@@ -5,4 +5,7 @@
     <string name="txtBedTime">Bed Time</string>
     <string name="txtWakeUpTime">Wake Up Time</string>
     <string name="txtHowAreYou">How Are You Feeling?</string>
+    <string name="txtHourSlept">Hours Slept</string>
+    <string name="txtBed">Bed time</string>
+    <string name="txtWakeup">Wake Up Time</string>
 </resources>
