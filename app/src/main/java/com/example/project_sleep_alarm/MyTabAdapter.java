@@ -23,6 +23,10 @@ public class MyTabAdapter extends FragmentPagerAdapter {
             case 1:
                 UserDataFrag dataFragment = new UserDataFrag();
                 return dataFragment;
+            case 2:
+                RelaxingMusicFrag relaxingFragment = new RelaxingMusicFrag();
+                return relaxingFragment;
+
             default:
                 return null;
         }

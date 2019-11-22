@@ -17,6 +17,8 @@ import java.util.Calendar;
 public class UserRateActivity extends AppCompatActivity {
     UserDataFrag fragment1;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
