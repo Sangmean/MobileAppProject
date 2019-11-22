@@ -33,9 +33,10 @@ public class MainActivity extends AppCompatActivity
         tabLayout.addTab(tabLayout.newTab().setText("Set Alarm"));
         tabLayout.addTab(tabLayout.newTab().setText("My Cycle"));
         tabLayout.addTab(tabLayout.newTab().setText("Relaxing"));
-        tabLayout.getTabAt(0).setIcon(R.drawable.alarmclockicon);
-        tabLayout.getTabAt(1).setIcon(R.drawable.sleepicon);
+        tabLayout.getTabAt(0).setIcon(R.drawable.clockicon);
+        tabLayout.getTabAt(1).setIcon(R.drawable.img_zz);
         tabLayout.getTabAt(2).setIcon(R.drawable.musicicon);
+
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final MyTabAdapter adapter = new MyTabAdapter(this,getSupportFragmentManager(),

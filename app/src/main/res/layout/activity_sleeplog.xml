@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SleeplogActivity">
+    tools:context=".SleeplogActivity"
+    android:background="@drawable/star">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -20,7 +21,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="@string/txtHourSlept"
-                android:textSize="18sp" />
+                android:textSize="20sp"
+                android:textStyle="bold|italic" />
 
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/barchart"
@@ -30,12 +32,22 @@
                 android:layout_marginRight="20dp" />
 
             <TextView
+                android:id="@+id/txtViewAvgHour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:text="@string/avghour"
+                android:textSize="18sp" />
+
+            <TextView
                 android:id="@+id/txtViewBed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="@string/txtBed"
-                android:textSize="18sp" />
+                android:textSize="20sp"
+                android:textStyle="bold|italic" />
 
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/linechartbed"
@@ -50,7 +62,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="@string/txtWakeup"
-                android:textSize="18sp" />
+                android:textSize="20sp"
+                android:textStyle="bold|italic" />
 
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/linechartwakeup"
