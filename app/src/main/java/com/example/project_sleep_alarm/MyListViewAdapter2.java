@@ -17,13 +17,26 @@ public class MyListViewAdapter2 extends BaseAdapter {
 
     List<String> myList2 = new ArrayList<>();
     List<Integer> myPics2 = new ArrayList<>();
+    List<Integer> mySong = new ArrayList<>();
+    int currentPlay;
 
     Context context;
 
-    public MyListViewAdapter2(Context anyContext, List<String> anyList, List<Integer> anyPics){
+    public MyListViewAdapter2(Context anyContext, List<String> anyList, List<Integer> anyPics, List<Integer> anyPlay){
         myList2 = anyList;
         myPics2 = anyPics;
+        mySong =  anyPlay;
         context = anyContext;
+        currentPlay = -1;
+    }
+
+    public int getCurrentPlay() {
+        return currentPlay;
+    }
+
+    public void setCurrentPlay(int currentPlay) {
+        this.currentPlay = currentPlay;
+        notifyDataSetChanged();
     }
 
     @Override
