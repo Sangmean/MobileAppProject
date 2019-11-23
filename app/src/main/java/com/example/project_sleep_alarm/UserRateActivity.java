@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -32,8 +33,8 @@ public class UserRateActivity extends AppCompatActivity {
         Button GoBack = (Button) findViewById(R.id.btnFeeling);
         final EditText BedTime = (EditText) findViewById(R.id.editTxtTime1);
         final EditText WakeUpTime = (EditText) findViewById(R.id.editTxtTIme2);
-      //  final TextView showDate = (TextView) findViewById(R.id.txtViewShowDate);
         Spinner spinnerSelectDate =(Spinner)findViewById(R.id.spinnerSelectDate);
+        RatingBar ratingSelectFeel = (RatingBar)findViewById(R.id.ratBarFeeling);
 
         GoBack.setOnClickListener(new View.OnClickListener()
         {
@@ -52,6 +53,13 @@ public class UserRateActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        ratingSelectFeel.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
 
             }
         });
