@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +29,10 @@ public class NightmodeActivity extends AppCompatActivity {
     ProgressHandler handler;
     int wakeupHour;
     int wakeupMinute;
+    String[] timearray = {"0","0","0","0"};
+    int hourArr;
+    int minuteArr;
+    int secondArr;
 
     //MainActivity mainActivity = new MainActivity();
     Calendar calendar = Calendar.getInstance();
@@ -45,8 +50,8 @@ public class NightmodeActivity extends AppCompatActivity {
         wakeupMinute = intent.getIntExtra("min",0);
 
 //  we don't need to show this unless we want it (Sangmin)
-//        Toast.makeText(getApplicationContext(), "Selected time: " + wakeupHour +
-//                ":" + wakeupMinute ,Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Selected time: " + wakeupHour +
+                ":" + wakeupMinute ,Toast.LENGTH_LONG).show();
 
         currentTime = findViewById(R.id.txtViewTime);
         handler = new ProgressHandler();
@@ -73,20 +78,26 @@ public class NightmodeActivity extends AppCompatActivity {
                         Message message = handler.obtainMessage();
                         handler.sendMessage(message);
 
-                        String[] timearray = time.split(":");
-                        int hourArr = Integer.parseInt(timearray[0]);
-                        int minuteArr = Integer.parseInt(timearray[1]);
-                        int secondArr = Integer.parseInt(timearray[2]);
+                        timearray = time.split("[:\\s*]");//11:11:01 AM
+                        hourArr = Integer.parseInt(timearray[0]);
+                        minuteArr = Integer.parseInt(timearray[1]);
+                        secondArr = Integer.parseInt(timearray[2]);
+                        String AmorPm = timearray[3];
+                        if (AmorPm.equals("PM")){
+                            hourArr+=12;
+                        }
 
-                        if (wakeupHour == hourArr && wakeupMinute == minuteArr && secondArr == 0){
+                        if ( hourArr == wakeupHour && wakeupMinute == minuteArr && secondArr == 0){
                             Intent intent = new Intent(getApplicationContext(),AlarmActivity.class);
+                            intent.putExtra("hour",wakeupHour);
+                            intent.putExtra("min", wakeupMinute);
                             startActivity(intent);
                         }
 
                         Thread.sleep(1000);
 
                     } catch (Exception ex){
-
+                        Log.e(ex.getMessage(),"Wrong");
                     }
                 }
             }

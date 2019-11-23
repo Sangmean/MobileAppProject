@@ -9,11 +9,28 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class AlarmActivity extends AppCompatActivity {
-
-    MainActivity mainActivity = new MainActivity();
+    SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss a");
+    String time;
+    ProgressHandler handler;
+    UsedAsync asyncTask;
+    EditText CurrentTime;
 
     MediaPlayer mediaPlayer = new MediaPlayer();
 
@@ -24,8 +41,32 @@ public class AlarmActivity extends AppCompatActivity {
 
         mediaPlayer = MediaPlayer.create(this,R.raw.jig);
         mediaPlayer.start();
-        alarmDialog();
 
+        CurrentTime = findViewById(R.id.txtTime);
+        Button stop = findViewById(R.id.stopBtn);
+        Button snooze = findViewById(R.id.snoozeBtn);
+
+        handler = new ProgressHandler();
+        runTime();
+
+        stop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                Intent returnMain = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(returnMain);
+            }
+        });
+
+        snooze.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alarm();
+                finish();
+//                Intent returnMain = new Intent(getApplicationContext(), MainActivity.class);
+//                startActivity(returnMain);
+            }
+        });
     }
 
     public void onDestroy() {
@@ -38,38 +79,57 @@ public class AlarmActivity extends AppCompatActivity {
         }
     }
 
-    public void alarmDialog(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("get up");
-//        builder.setPositiveButton("take a nape", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                alarm();
-//                finish();
-//            }
-//        });
-        builder.setNegativeButton("cancel alarm", new DialogInterface.OnClickListener() {
+    public void alarm(){
+        TimerTask timerTask = new TimerTask() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                finish();
+            public void run() {
+                startActivity(new Intent(getApplicationContext(),AlarmActivity.class));
             }
-        });
-        builder.show();
+        };
+        Timer timer = new Timer();
+        timer.schedule(timerTask,5000);
     }
 
-//    public void alarm(){
-//        //get system alarm service
-//        AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-//
-//        //triggerTime(ms)
-//        long triggerTime = 2000;
-//        Intent intent = new Intent(getApplicationContext(),AlarmActivity.class);
-//        PendingIntent op = PendingIntent.getBroadcast(getApplicationContext(),0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
-//        //excute only once
-//        am.set(AlarmManager.RTC,triggerTime,op);
-//
-//        //am.setRepeating(AlarmManager.RTC,triggerTime,2000,op);
-//
-//
-//    }
+    public void runTime(){
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    try{
+                        time = sdf.format(new Date(System.currentTimeMillis()));
+                        Message message = handler.obtainMessage();
+                        handler.sendMessage(message);
+
+                        Thread.sleep(1000);
+
+                    } catch (Exception ex){
+                        Log.e(ex.getMessage(),"Wrong");
+                    }
+                }
+            }
+        });
+        thread.start();
+
+        asyncTask = new AlarmActivity.UsedAsync();
+        asyncTask.execute();
+    }
+
+    class ProgressHandler extends Handler {
+        public void handleMessage(Message msg){
+            CurrentTime.setText(time);
+            CurrentTime.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL);
+        }
+    }
+
+    class UsedAsync extends AsyncTask<Integer, Integer, Integer> {
+
+        @Override
+        protected Integer doInBackground(Integer... integers) {
+            return null;
+        }
+
+        protected void onPostExecute(Integer integer){
+            super.onPostExecute(integer);
+        }
+    }
 }
