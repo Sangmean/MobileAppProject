@@ -8,8 +8,11 @@ import androidx.fragment.app.FragmentTransaction;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import java.util.Calendar;
@@ -29,6 +32,8 @@ public class UserRateActivity extends AppCompatActivity {
         Button GoBack = (Button) findViewById(R.id.btnFeeling);
         final EditText BedTime = (EditText) findViewById(R.id.editTxtTime1);
         final EditText WakeUpTime = (EditText) findViewById(R.id.editTxtTIme2);
+      //  final TextView showDate = (TextView) findViewById(R.id.txtViewShowDate);
+        Spinner spinnerSelectDate =(Spinner)findViewById(R.id.spinnerSelectDate);
 
         GoBack.setOnClickListener(new View.OnClickListener()
         {
@@ -39,6 +44,18 @@ public class UserRateActivity extends AppCompatActivity {
             }
 
         });
+
+        spinnerSelectDate.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
 
         BedTime.setOnClickListener(new View.OnClickListener() {
             @Override
