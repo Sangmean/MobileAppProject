@@ -52,7 +52,7 @@
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/linechartbed"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="150dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
 
@@ -68,7 +68,7 @@
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/linechartwakeup"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="150dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
 

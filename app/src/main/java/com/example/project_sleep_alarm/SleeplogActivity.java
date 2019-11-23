@@ -1,6 +1,7 @@
 package com.example.project_sleep_alarm;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -53,7 +54,7 @@ public class SleeplogActivity extends AppCompatActivity {
             String date = MySleepCycle.get(i)[0];
             Integer bedtime = Integer.parseInt(MySleepCycle.get(i)[1]);
             Integer wakeuptime = Integer.parseInt(MySleepCycle.get(i)[2]);
-            Integer rate = Integer.parseInt(MySleepCycle.get(i)[3]);
+            Double rate = Double.parseDouble(MySleepCycle.get(i)[3]);
             addUserCycle(date,bedtime,wakeuptime,rate); //put values in db
         }
 
@@ -81,7 +82,7 @@ public class SleeplogActivity extends AppCompatActivity {
         try {
             String dropCycleTable = "DROP TABLE IF EXISTS cycle;";
 
-            String createCycle = "CREATE TABLE cycle (date TEXT PRIMARY KEY, bedtime INTEGER, wakeuptime INTEGER, rate INTEGER);";
+            String createCycle = "CREATE TABLE cycle (date TEXT PRIMARY KEY, bedtime INTEGER, wakeuptime INTEGER, rate DECIMAL);";
 
             db.execSQL(dropCycleTable);
             db.execSQL(createCycle);
@@ -116,7 +117,7 @@ public class SleeplogActivity extends AppCompatActivity {
     }
 
     //add user information in table
-    private void addUserCycle(String date, Integer bedtime, Integer wakeuptime, Integer rate){
+    private void addUserCycle(String date, Integer bedtime, Integer wakeuptime, Double rate){
         long result;
         ContentValues val = new ContentValues();
         val.put("date", date);
@@ -198,7 +199,7 @@ public class SleeplogActivity extends AppCompatActivity {
         barChart.setData(barData);
         barChart.getXAxis().setTextColor(android.R.color.white);
         barChart.setFitBars(true);
-        barChart.animateXY(3000, 3000);
+        barChart.animateY(2000);
         barChart.invalidate();
     }
 
@@ -206,21 +207,24 @@ public class SleeplogActivity extends AppCompatActivity {
         /* https://namget.tistory.com/entry/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-MPAndroidChart-LineChart-%EC%86%8D%EC%84%B1-%EC%A0%95%EB%A6%AC-Example*/
         LineDataSet lineDataSet = new LineDataSet(getLineData(rowIdx),null);
 
-
-        LineData lineData = new LineData(lineDataSet);
-//        lineDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-
-//        /*dataset.setDrawCubic(true); //선 둥글게 만들기
+        //properties of line chart
+        lineDataSet.setColors(R.color.colorPrimary);
+        lineDataSet.setLineWidth(2);
+        lineDataSet.setCircleRadius(6);
         lineDataSet.setDrawFilled(true);
+
+        //set xaxis
         XAxis xAxis = lineChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+
         String[] days = getLables();
         IndexAxisValueFormatter formatter = new IndexAxisValueFormatter(days);
         xAxis.setGranularity(1f);
         xAxis.setValueFormatter(formatter);
 
+        LineData lineData = new LineData(lineDataSet);
         lineChart.setData(lineData);
-        lineChart.animateY(3000);
+        lineChart.animateY(2000);
     }
 
 }
