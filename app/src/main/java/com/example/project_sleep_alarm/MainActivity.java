@@ -1,6 +1,10 @@
 package com.example.project_sleep_alarm;
 
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
@@ -9,6 +13,7 @@ import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity
         implements SetAlarmFrag.OnTimePickerSetListener{
+    SQLiteDatabase db;
 
 
     //data from setAlarmFrag
@@ -26,6 +31,8 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        createDB();
+        createTables();
 
         tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewPager);
@@ -56,6 +63,33 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+
+    }
+
+
+    //create DB
+    private void createDB(){
+        try {
+            db = openOrCreateDatabase("SleepCycle.db", Context.MODE_PRIVATE, null);
+            Toast.makeText(this,"Database ready",Toast.LENGTH_SHORT).show();
+        } catch (Exception ex) {
+            Log.e("DB DEMO: ", ex.getMessage());
+        }
+    }
+
+    //create Tables
+    private void createTables() {
+        try {
+            String dropCycleTable = "DROP TABLE IF EXISTS cycle;";
+
+            String createCycle = "CREATE TABLE cycle (date TEXT PRIMARY KEY, bedtime STRING, wakeuptime STRING, rate STRING);";
+
+            db.execSQL(dropCycleTable);
+            db.execSQL(createCycle);
+            Log.e("DB DEMO:", "Create Tables");
+        } catch (Exception ex) {
+            Log.e("DB DEMO: ","Error in creating tables "+ ex.getMessage());
+        }
     }
 
 }
