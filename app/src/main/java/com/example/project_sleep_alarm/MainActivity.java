@@ -71,9 +71,8 @@ public class MainActivity extends AppCompatActivity
     private void createDB(){
         try {
             db = openOrCreateDatabase("SleepCycle.db", Context.MODE_PRIVATE, null);
-            Toast.makeText(this,"Database ready",Toast.LENGTH_SHORT).show();
         } catch (Exception ex) {
-            Log.e("DB DEMO: ", ex.getMessage());
+            Log.e("DB CREATE: ", ex.getMessage());
         }
     }
 
@@ -86,9 +85,9 @@ public class MainActivity extends AppCompatActivity
 
             db.execSQL(dropCycleTable);
             db.execSQL(createCycle);
-            Log.e("DB DEMO:", "Create Tables");
+            Log.e("DB TABLE:", "Create Tables");
         } catch (Exception ex) {
-            Log.e("DB DEMO: ","Error in creating tables "+ ex.getMessage());
+            Log.e("DB TABLE: ","Error in creating tables "+ ex.getMessage());
         }
     }
 

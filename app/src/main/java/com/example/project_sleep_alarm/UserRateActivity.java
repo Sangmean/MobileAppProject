@@ -1,9 +1,6 @@
 package com.example.project_sleep_alarm;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.app.TimePickerDialog;
 import android.content.ContentValues;
@@ -17,22 +14,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 public class UserRateActivity extends AppCompatActivity {
     UserDataFrag fragment1;
     SQLiteDatabase db;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,25 +30,34 @@ public class UserRateActivity extends AppCompatActivity {
 
         fragment1 = new UserDataFrag();
 
-        Button OKButton = (Button) findViewById(R.id.btnFeeling);
-        final EditText BedTime = (EditText) findViewById(R.id.editTxtTime1);
-        final EditText WakeUpTime = (EditText) findViewById(R.id.editTxtTIme2);
-        final EditText Date = (EditText) findViewById(R.id.editTxtTIme3);
-        final EditText Rate = (EditText) findViewById(R.id.editTxtTIme4);
+        Button GoBack = findViewById(R.id.btnGoBack);
+        final EditText BedTime = findViewById(R.id.editTxtTime1);
+        final EditText WakeUpTime = findViewById(R.id.editTxtTIme2);
+        final EditText Date = findViewById(R.id.editTxtTIme3);
+        final EditText Rate = findViewById(R.id.editTxtTIme4);
 
-        final Spinner spinnerSelectDate =(Spinner)findViewById(R.id.spinnerSelectDate);
-        RatingBar ratingSelectFeel = (RatingBar)findViewById(R.id.ratBarFeeling);
+        final Spinner spinnerSelectDate = findViewById(R.id.spinnerSelectDate);
+        RatingBar ratingSelectFeel = findViewById(R.id.ratBarFeeling);
 
-        OKButton.setOnClickListener(new View.OnClickListener()
+        Button submitbtn = findViewById(R.id.btnSubmit);
+        submitbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDB();
+                addUserCycle(Date.getText().toString(),BedTime.getText().toString(),WakeUpTime.getText().toString(),Rate.getText().toString()); //put values in db
+                Toast.makeText(UserRateActivity.this,"Complet to Update your Sleep graph",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        GoBack.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view) {
-                openDB();
-                addUserCycle(Date.getText().toString(),BedTime.getText().toString(),WakeUpTime.getText().toString(),Rate.getText().toString()); //put values in db
-                finish();
+                  finish();
             }
 
         });
+
 
         spinnerSelectDate.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -127,8 +125,6 @@ public class UserRateActivity extends AppCompatActivity {
         });
 
 
-
-
     }
 
     private void addUserCycle(String date, String bedtime, String wakeuptime, String rate){
@@ -140,9 +136,9 @@ public class UserRateActivity extends AppCompatActivity {
         val.put("rate", rate);
         result = db.replace("cycle",null, val);
         if (result != -1) {
-            Log.e("DB Demo: ", "Added item "+ date);
+            Log.e("DB add table ", "Added item "+ date);
         } else {
-            Log.e("DB Demo: ", "Error adding "+date);
+            Log.e("DB add table:", "Error adding "+date);
         }
     }
 
@@ -150,7 +146,6 @@ public class UserRateActivity extends AppCompatActivity {
     private void openDB(){
         try {
             db = openOrCreateDatabase("SleepCycle.db", MODE_PRIVATE, null);
-            Toast.makeText(this,"Database opened", Toast.LENGTH_SHORT).show();
         } catch (Exception ex){
             Log.e("DB DEMO", ex.getMessage());
         }

@@ -71,17 +71,14 @@ public class UserDataFrag extends Fragment {
                     case 1:
                         startActivity(new Intent(UserDataFrag.this.getActivity(), SleeplogActivity.class));
                         break;
-//                    case 2:
-//                        startActivity(new Intent(UserDataFrag.this.getActivity(), VoiceRecordActivity.class));
-//                        break;
                 }
             }
         });
 
-
-
         return v;
     }
+
+
 
 
 

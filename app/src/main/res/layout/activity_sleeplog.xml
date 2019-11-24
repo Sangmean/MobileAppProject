@@ -16,11 +16,33 @@
             android:orientation="vertical" >
 
             <TextView
+                android:id="@+id/txtViewRcmTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:text="Recommended Sleep Hour"
+                android:textSize="20sp"
+                android:textStyle="bold|italic" />
+
+            <TextView
+                android:id="@+id/txtViewShowTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:textSize="18sp" />
+
+            <TextView
                 android:id="@+id/txtViewHourSlept"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="@string/txtHourSlept"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:text="Sleep Hour"
                 android:textSize="20sp"
                 android:textStyle="bold|italic" />
 
@@ -54,7 +76,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp" />
+                android:layout_marginRight="20dp" >
+
+            </com.github.mikephil.charting.charts.LineChart>
+
+            <TextView
+                android:id="@+id/txtViewAvgBed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:text="Average Bed Time:"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/txtViewWakeup"
@@ -71,6 +104,15 @@
                 android:layout_height="150dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
+
+            <TextView
+                android:id="@+id/txtViewAvgWakeup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:text="Average Wake up Time:"
+                android:textSize="18sp" />
 
         </LinearLayout>
     </ScrollView>
