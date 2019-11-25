@@ -37,10 +37,8 @@ public class UserDataFrag extends Fragment {
     private void addItems(){
         userDataList.add("Record Feeling");
         userDataList.add("Sleep Graph");
-//        userDataList.add("Record Voice");
-        userDataListIcon.add(R.drawable.recordfeel);
+        userDataListIcon.add(R.drawable.reporticon);
         userDataListIcon.add(R.drawable.graphicon);
-//        userDataListIcon.add(R.drawable.voiceicon);
     }
     public UserDataFrag() {
         // Required empty public constructor

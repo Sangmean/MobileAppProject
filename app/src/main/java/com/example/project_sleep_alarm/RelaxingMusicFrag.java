@@ -30,23 +30,12 @@ public class RelaxingMusicFrag extends Fragment {
     MediaPlayer songPlay = new MediaPlayer();
 
     private void addItems(){
-        userDataList2.add("Rain Sound");
-        userDataList2.add("Storm Sound");
-        userDataList2.add("Bird Sound");
-        userDataList2.add("Ocean Sound");
-     //   userDataList2.add("Forest Sound");
-        userDataList2.add("Waterfall Sound");
-        userDataList2.add("Wind Sound");
 
-        userDataListIcon2.add(R.drawable.rainicon);
-        userDataListIcon2.add(R.drawable.stormicon);
-        userDataListIcon2.add(R.drawable.birdicon);
-        userDataListIcon2.add(R.drawable.oceanicon);
-       // userDataListIcon2.add(R.drawable.foresticon);
-        userDataListIcon2.add(R.drawable.waterfallicon);
-        userDataListIcon2.add(R.drawable.windicon);
+        userDataList2 = Arrays.asList("Calm Light Rain", "Storm at Night", "Bird in the Mountain", "Ocean Waves", "Campfire in the Forest", "Incest Night Nature");
 
-        userRelaxSongs = Arrays.asList(R.raw.rain,R.raw.thunderstorm,R.raw.bird,R.raw.ocean,R.raw.rain,R.raw.thunderstorm);
+        userDataListIcon2 = Arrays.asList(R.drawable.rainicon,R.drawable.stormicon,R.drawable.birdicon,R.drawable.oceanicon,R.drawable.campfire,R.drawable.grass);
+
+        userRelaxSongs = Arrays.asList(R.raw.rain,R.raw.storm,R.raw.bird,R.raw.ocean,R.raw.campfire,R.raw.incest);
 
     }
     public RelaxingMusicFrag() {

@@ -39,7 +39,7 @@ public class AlarmActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm);
 
-        mediaPlayer = MediaPlayer.create(this,R.raw.jig);
+        mediaPlayer = MediaPlayer.create(this,R.raw.alarm);
         mediaPlayer.start();
 
         CurrentTime = findViewById(R.id.txtTime);
