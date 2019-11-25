@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
@@ -48,8 +49,8 @@ public class SleeplogActivity extends AppCompatActivity {
         lineChartWakeup = findViewById(R.id.linechartwakeup);
         avgWakeupHrs = findViewById(R.id.txtViewAvgWakeup);
 
-        String rcmTime = getRcmQuery();
-        rcmHrs.setText(rcmTime);
+        getRcmQuery();
+//        rcmHrs.setText(rcmTime);
 
         DrawBarChart();
         DrawLineChart(lineChartBed, 1); //draw line chart for bed time
@@ -57,12 +58,12 @@ public class SleeplogActivity extends AppCompatActivity {
 
     }
 
-    private String getRcmQuery() {
+    private void getRcmQuery() { //method about recommend sleep hour
 
         float bedtime;
         float wakeuptime;
         float sleepHour = 0f;
-        float avgSleepHr;
+        float avgSleepHr=0f;
         String val = "";
         Integer highRate = 0;
         Integer highRateDiv = 1;
@@ -101,12 +102,17 @@ public class SleeplogActivity extends AppCompatActivity {
                 sleepHour += 7.50;
                 highRateDiv++;
                 avgSleepHr = sleepHour / highRateDiv;
+
                 val = TimeconverterS(String.valueOf(avgSleepHr));
+                if(sleepHour == 7.50){rcmHrs.setText("7h 30 m");} //normal ideal sleep hour
+                else{
+                    rcmHrs.setText(val);
+                }
+
             }
         } catch (Exception ex){
             Log.e("Recommend time", ex.getMessage());
         }
-        return val;
     }
 
 
@@ -181,12 +187,12 @@ public class SleeplogActivity extends AppCompatActivity {
                 }
             if (timeNum != 0){
                 avgTime = timeTemp / timeNum;
-                avgTimeS = TimeconverterS(String.valueOf(avgTime));
+                avgTimeS = TimeconverterS2(String.valueOf(avgTime));
             }
             if(callTime == 1){
-                avgBedHrs.setText("Your Average Bed Time: " + avgTimeS);
+                avgBedHrs.setText("Your Average Bed Time -> " + avgTimeS);
             } else {
-                avgWakeupHrs.setText("Your Average Wake up Time: " + avgTimeS);
+                avgWakeupHrs.setText("Your Average Wake up Time -> " + avgTimeS);
             }
 
         } catch (Exception ex){
@@ -214,14 +220,25 @@ public class SleeplogActivity extends AppCompatActivity {
         return timeI;
     }
 
+    private String TimeconverterS2(String time){
+        String[] parts = time.split("\\.");
+        float hour = Float.parseFloat((parts[0]));
+        float minute = (Float.parseFloat(time)-hour)*60;
+        String timeI = String.valueOf(Math.round(hour)) + " : " + String.valueOf(Math.round(minute));
+        return timeI;
+    }
+
     private String[] getLables(){
         String[] labels = new String[]{"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
         return labels;
     }
 
     private void DrawBarChart(){
-        BarDataSet barDataSet = new BarDataSet(getQuery(), "Inducesmile");
+        BarDataSet barDataSet = new BarDataSet(getQuery(), null);
         barDataSet.setBarBorderWidth(0.9f);
+        barDataSet.setValueTextColor(Color.WHITE);
+        barDataSet.setValueTextSize(12);
+
 
         XAxis xAxis = barChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
@@ -231,20 +248,28 @@ public class SleeplogActivity extends AppCompatActivity {
         IndexAxisValueFormatter formatter = new IndexAxisValueFormatter(days);
         xAxis.setGranularity(1f);
         xAxis.setValueFormatter(formatter);
+        xAxis.setTextSize(12);
 
         BarData barData = new BarData(barDataSet);
         barChart.setData(barData);
+        barChart.getLegend().setEnabled(false);
+        barChart.getDescription().setEnabled(false);
         barChart.setFitBars(true);
-        barChart.animateY(2000);
+        barChart.animateY(1500);
+//        barChart.setVisibleXRange(0f, 6.75f);
+//        barChart.setVisibleYRange(0f,12f, YAxis.AxisDependency.LEFT);
     }
 
     private void DrawLineChart(LineChart lineChart, int rowIdx){
         LineDataSet lineDataSet = new LineDataSet(getLineData(rowIdx),null);
 
         //properties of line chart
-        lineDataSet.setLineWidth(2);
+        lineDataSet.setLineWidth(3);
         lineDataSet.setCircleRadius(4);
-        lineDataSet.setDrawFilled(true);
+//        lineDataSet.setDrawFilled(true);
+        lineDataSet.setAxisDependency(YAxis.AxisDependency.LEFT);
+        lineDataSet.setValueTextColor(Color.WHITE);
+        lineDataSet.setValueTextSize(12);
 
         //set xaxis
         XAxis xAxis = lineChart.getXAxis();
@@ -255,11 +280,24 @@ public class SleeplogActivity extends AppCompatActivity {
         IndexAxisValueFormatter formatter = new IndexAxisValueFormatter(days);
         xAxis.setGranularity(1f);
         xAxis.setValueFormatter(formatter);
+        xAxis.setTextSize(12);
+
+        //set yAxis
+        YAxis yAxis = lineChart.getAxisLeft();
+        yAxis.setTextColor(R.color.colorWhite);
+        yAxis.setGranularity(1f);
+        yAxis.setTextSize(14);
 
         LineData lineData = new LineData(lineDataSet);
 
         lineChart.setData(lineData);
-        lineChart.animateY(2000);
+        lineChart.getLegend().setEnabled(false); //hide the legend
+//        lineChart.setFitXsSystemWindows(true);
+        lineChart.getDescription().setEnabled(false);
+        lineChart.animateY(1500);
+//        lineChart.setVisibleXRange(0f, 6f);
+
+//        lineChart.setVisibleYRange(0f, 24f, YAxis.AxisDependency.LEFT);
     }
 
     private void openDB(){

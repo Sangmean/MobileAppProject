@@ -4,10 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
@@ -20,7 +18,6 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 public class NightmodeActivity extends AppCompatActivity {
 
@@ -49,7 +46,6 @@ public class NightmodeActivity extends AppCompatActivity {
         wakeupHour = intent.getIntExtra("hour", 0);
         wakeupMinute = intent.getIntExtra("min",0);
 
-//  we don't need to show this unless we want it (Sangmin)
         Toast.makeText(getApplicationContext(), "Selected time: " + wakeupHour +
                 ":" + wakeupMinute ,Toast.LENGTH_LONG).show();
 
@@ -68,6 +64,7 @@ public class NightmodeActivity extends AppCompatActivity {
 
     }
 
+    //show current time & alarming
     public void runTime(){
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -78,7 +75,7 @@ public class NightmodeActivity extends AppCompatActivity {
                         Message message = handler.obtainMessage();
                         handler.sendMessage(message);
 
-                        timearray = time.split("[:\\s*]");//11:11:01 AM
+                        timearray = time.split("[:\\s*]");
                         hourArr = Integer.parseInt(timearray[0]);
                         minuteArr = Integer.parseInt(timearray[1]);
                         secondArr = Integer.parseInt(timearray[2]);

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
@@ -14,7 +13,6 @@ import com.google.android.material.tabs.TabLayout;
 public class MainActivity extends AppCompatActivity
         implements SetAlarmFrag.OnTimePickerSetListener{
     SQLiteDatabase db;
-
 
     //data from setAlarmFrag
     int wakeupHour, wakeupMinute;
@@ -65,7 +63,6 @@ public class MainActivity extends AppCompatActivity
 
 
     }
-
 
     //create DB
     private void createDB(){

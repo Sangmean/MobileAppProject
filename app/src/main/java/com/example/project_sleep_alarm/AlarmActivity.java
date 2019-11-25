@@ -1,12 +1,7 @@
 package com.example.project_sleep_alarm;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
@@ -16,7 +11,6 @@ import android.os.Message;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -26,6 +20,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class AlarmActivity extends AppCompatActivity {
+
     SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss a");
     String time;
     ProgressHandler handler;
@@ -63,8 +58,6 @@ public class AlarmActivity extends AppCompatActivity {
             public void onClick(View v) {
                 alarm();
                 finish();
-//                Intent returnMain = new Intent(getApplicationContext(), MainActivity.class);
-//                startActivity(returnMain);
             }
         });
     }
@@ -103,7 +96,7 @@ public class AlarmActivity extends AppCompatActivity {
                         Thread.sleep(1000);
 
                     } catch (Exception ex){
-                        Log.e(ex.getMessage(),"Wrong");
+                        Log.e("timer ",ex.getMessage());
                     }
                 }
             }

@@ -23,7 +23,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:text="Recommended Sleep Hour"
-                android:textSize="20sp"
+                android:textSize="28sp"
                 android:textStyle="bold|italic" />
 
             <TextView
@@ -33,7 +33,9 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:gravity="center"
-                android:textSize="18sp" />
+                android:textColor="@android:color/holo_blue_bright"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/txtViewHourSlept"

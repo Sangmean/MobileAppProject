@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.TimePickerDialog;
 import android.content.ContentValues;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
@@ -45,7 +44,7 @@ public class UserRateActivity extends AppCompatActivity {
             public void onClick(View v) {
                 openDB();
                 addUserCycle(Date.getText().toString(),BedTime.getText().toString(),WakeUpTime.getText().toString(),Rate.getText().toString()); //put values in db
-                Toast.makeText(UserRateActivity.this,"Complet to Update your Sleep graph",Toast.LENGTH_SHORT).show();
+                Toast.makeText(UserRateActivity.this,"Update Sleep graph",Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -120,7 +119,6 @@ public class UserRateActivity extends AppCompatActivity {
                 }, hour, minute, false);
                 TimePicker.setTitle("Select Time");
                 TimePicker.show();
-
             }
         });
 

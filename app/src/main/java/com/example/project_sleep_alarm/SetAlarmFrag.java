@@ -45,7 +45,6 @@ public class SetAlarmFrag extends Fragment {
 
                 Intent intent = new Intent (SetAlarmFrag.this.getActivity(), NightmodeActivity.class);
 
-               // Intent intent = new Intent (SetAlarmFrag.this.getActivity(), NightmodeActivity.class);
                 intent.putExtra("hour",hour);
                 intent.putExtra("min", minutes);
 
